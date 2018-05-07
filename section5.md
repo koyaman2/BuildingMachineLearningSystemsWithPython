@@ -3,7 +3,7 @@
 ### この章の内容を一言でいうと：増え続けるテキストのクラス分類にはk近傍法は向かないぜ。イケてないと思ったらバイアスーバリアンスのトレードオフをしよう！
 
 - 実際に分類器を作ってみて試行錯誤する流れになってます
-- 変化に富む対象に対しinstance-basedのk近傍法は向かず、model-basedのロジスティック回帰の方が筋が良い
+- 変化し続ける対象に対しinstance-basedのk近傍法は向かず、model-basedのロジスティック回帰の方が筋が良い
 - つまり、対象について十分理解して分類手法を考えましょう
 - 筋が良いか悪いかは色々な改善をしながら調べたり、バイアスーバリアンスのトレードオフで調べましょう
     - データを修正する(追加する/削減する)
@@ -211,13 +211,14 @@ NewはAに似ているべきだが、今の手法だとBに似ていると判断
 - モデルが複雑すぎる＝過学習＝データに対してバリアンスが大きすぎる
 
 理想は両方とも小さくしたいが、シーソーのような関係にある
+![alt](https://github.com/koyaman2/BuildingMachineLearningSystemsWithPython/blob/master/bias_variance1.png)
+![alt](https://github.com/koyaman2/BuildingMachineLearningSystemsWithPython/blob/master/bias_variance2.png)
 
 ### バイアスが大きい場合の対処法
 - 訓練データをいくら追加しても、正解率は改善されない
 - 特徴量の数を減らしても改善してされない
 
 本質的な理由はモデルが単純だから。なので対処法としては以下になる。
-
 - 特徴量を増やす
 - モデルを複雑なものにする
 - モデルを変更する
@@ -338,6 +339,8 @@ C=0.1の時のバイアスーバリアンスをみる
 「できるだけ多くの良い回答または悪い回答を見つけるようにしたい」場合
 - 再現率＝TP / TP + FN
 
+![alt](https://github.com/koyaman2/BuildingMachineLearningSystemsWithPython/blob/master/precision_recall.png)
+
 我々ができることは閾値を変更したときのTP/FP/FNの数を数えること
 これから再現率と適合率の変移をプロットできる
 ```
@@ -397,12 +400,14 @@ clf = pickle.load(open(“logreg.dat”, “r”))
 
 # まとめ
 増え続けるテキストのクラス分類にはk近傍法は向かないぜ。
-- 変化に富む対象に対しinstance-basedのk近傍法は向かず、model-basedのロジスティック回帰の方が筋が良い
+- 変化し続ける対象に対しinstance-basedのk近傍法は向かず、model-basedのロジスティック回帰の方が筋が良い
 - つまり、対象について十分理解して分類手法を考えましょう
 
 やってみてイケてないと思ったらバイアスーバリアンスのトレードオフをしよう！
 - モデルが単純すぎる＝未学習＝データに対してバイアスが大きすぎる
 - モデルが複雑すぎる＝過学習＝データに対してバリアンスが大きすぎる
+
+![alt](https://github.com/koyaman2/BuildingMachineLearningSystemsWithPython/blob/master/bias_variance1.png)
 
 ### バイアスが大きい場合の対処法
 - 特徴量を増やす
